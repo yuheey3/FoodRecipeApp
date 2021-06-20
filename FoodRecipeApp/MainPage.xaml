@@ -33,7 +33,7 @@
                     <Entry x:Name="fLetter" Grid.Row="1" Grid.Column="0" Placeholder="First letter " PlaceholderColor="LightGray"   FontAttributes="Bold" FontSize="Medium" WidthRequest="100" Margin="0,0,5,0"/>
                     <Button Grid.Row="1" Grid.Column="1" Text="Search by First letter" FontAttributes="Bold" FontSize="Medium"  BackgroundColor="LightBlue" Margin="5,0,0,0" Clicked="Search_By_FirstLetter"/>
                     <Entry Grid.Row="2" Grid.Column="0" Placeholder="Categories" PlaceholderColor="LightGray"   FontAttributes="Bold" FontSize="Medium" WidthRequest="100" Margin="0,0,5,0"/>
-                    <Button Grid.Row="2" Grid.Column="1" Text="Search by Categories" FontAttributes="Bold" FontSize="Medium" BackgroundColor="LightGreen" TextColor="green" Margin="5,0,0,0"/>
+                    <Button Grid.Row="2" Grid.Column="1" Text="Search by Categories" FontAttributes="Bold" FontSize="Medium" BackgroundColor="LightGreen" TextColor="green" Margin="5,0,0,0" Clicked="Search_By_Category"/>
                 </Grid>
                 <Button Margin="20,20,20,20" Text="My Favourite Food Recipe" FontAttributes="Bold" FontSize="Medium"  TextColor="red" BackgroundColor="Lightpink" HeightRequest="60"  />
 

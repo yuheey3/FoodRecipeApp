@@ -33,10 +33,23 @@ namespace FoodRecipeApp.Model
 
             }
 
-        
+        }
 
-      
+        public async Task<List<Category>> GetCategory()
+        {
+            //client.GetStringAsync
 
+            var response = await client.GetAsync(url + "/api/json/v1/1/categories.php");
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return new List<Category>();
+            else
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();// json
+                var dic = JsonConvert.DeserializeObject<Dictionary<string, object>>(stringResponse);
+                var array = dic.ElementAt(0).Value;
+                return JsonConvert.DeserializeObject<List<Category>>(array.ToString());
+
+            }
 
         }
     }

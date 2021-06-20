@@ -40,9 +40,7 @@ namespace FoodRecipeApp
         {
             selectedFood = detailList.SelectedItem as Food;
 
-           
-        }
 
-    
+        }
     }
 }

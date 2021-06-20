@@ -50,7 +50,11 @@ namespace FoodRecipeApp
            var firstLetter = fLetter.Text;
             await Navigation.PushAsync(new FirstLetter(firstLetter));
         }
-        
+        async private void Search_By_Category(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Categories());
+        }
+
 
         //public string ImageUrl
         //{

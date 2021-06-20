@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FoodRecipeApp.Categories"
+      Title="Search by Category">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="detailList2" ItemSelected="detailList2_ItemSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="0,13" >
+                                <StackLayout >
+                                    <Grid Padding="0,5,5,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="400"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0">
+                                            <Grid>
+                                                <Image Grid.Row="0" Grid.Column="0"  Source="{Binding strCategoryThumb}"/>
+                                                <Label Grid.Row="0" Grid.Column="1" TextColor="DarkBlue" FontAttributes="Bold" FontSize="Large" Text="{Binding strCategory}"  />
+
+                                            </Grid>
+
+                                        </StackLayout>
+
+                                    </Grid>
+                                    <Label FontAttributes="Bold" Text="{Binding strCategoryDescription}" Margin="20,0,20,0"/>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
