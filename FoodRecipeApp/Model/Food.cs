@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FoodRecipeApp.Model
 {
-    public class RandomFood
+    public class Food
     {
         public string idMeal { get; set; }
         public string strMeal { get; set; }
@@ -14,6 +14,12 @@ namespace FoodRecipeApp.Model
         public string strMealThumb { get; set; }
         public string strTags { get; set; }
         public string strYoutube { get; set; }
+
+
+        public Food()
+        {
+
+        }
     }
 
 }
