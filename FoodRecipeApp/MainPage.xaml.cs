@@ -42,7 +42,8 @@ namespace FoodRecipeApp
 
         async private void Search_By_Name(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new FirstLetter());
+            var name = fName.Text;
+            await Navigation.PushAsync(new SearchName(name));
         }
         async private void Search_By_FirstLetter(object sender, EventArgs e)
         {

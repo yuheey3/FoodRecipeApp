@@ -17,6 +17,26 @@ namespace FoodRecipeApp.Model
         private HttpClient client = new HttpClient();
 
 
+
+        public async Task<List<Food>> GetFoodByName(string fName)
+        {
+            //client.GetStringAsync
+
+            var response = await client.GetAsync(url + "/api/json/v1/1/search.php?s=" + fName);
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return new List<Food>();
+            else
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();// json
+                var dic = JsonConvert.DeserializeObject<Dictionary<string, object>>(stringResponse);
+                var array = dic.ElementAt(0).Value;
+                return JsonConvert.DeserializeObject<List<Food>>(array.ToString());
+
+            }
+
+        }
+
+
         public async Task<List<Food>> GetFood(string fLetter)
         {
             //client.GetStringAsync
