@@ -17,7 +17,7 @@ namespace FoodRecipeApp
         public ObservableCollection<Food> food;
         public Manager manager = new Manager();
         Food selectedFood;
-        private string fLetter = ""; 
+        private string fLetter = "";
 
 
         public FirstLetter(string text)
@@ -30,11 +30,11 @@ namespace FoodRecipeApp
         {
             detailList.ItemsSource = null;
 
-         
-                var list = await manager.GetFood(fLetter);
-                food = new ObservableCollection<Food>(list);
-                detailList.ItemsSource = food;
-            
+
+            var list = await manager.GetFood(fLetter);
+            food = new ObservableCollection<Food>(list);
+            detailList.ItemsSource = food;
+
             base.OnAppearing();
 
         }

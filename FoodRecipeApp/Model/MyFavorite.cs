@@ -65,7 +65,7 @@ namespace FoodRecipeApp.Model
                 }
             }
         }
-    
+
         public string dataMealThumb
         {
             get { return _dataMealThumb; }
@@ -96,23 +96,9 @@ namespace FoodRecipeApp.Model
                 }
             }
         }
-   
-        public bool isFavorite{ get; set; }
-   
 
-        public string statusFavorite
-        {
-            get
-            {
-                if (isFavorite)
-                    return "Added to My Favorite";
-                else
-                    return "Add to My Favorite";
-            }
-            set { }
-        }
 
-     
+
 
     }
 }

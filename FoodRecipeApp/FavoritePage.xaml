@@ -36,13 +36,13 @@
                                                     <Label Text= "{Binding dataTags}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  FontSize="Medium" TextColor="Black" />
                                                 </StackLayout>
                                             </StackLayout>
-                                           
+
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>
 
                             </StackLayout>
-                               <ViewCell.ContextActions>
+                            <ViewCell.ContextActions>
                                 <MenuItem Text="Delete" Clicked="deleteFromDB" CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>
                         </ViewCell>

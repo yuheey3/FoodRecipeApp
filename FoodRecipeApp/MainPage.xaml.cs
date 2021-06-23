@@ -16,40 +16,54 @@ namespace FoodRecipeApp
     public partial class MainPage : ContentPage
     {
         public Manager manager = new Manager();
-        //private string imgUrl = "";
-       // public ObservableCollection<RandomFood> randomFood;
-   
+        public ObservableCollection<Food> food;
+        private string StrMealThumb = "";
 
         public MainPage()
         {
             InitializeComponent();
+           
+        }
+
+        protected async override void OnAppearing()
+        {
+
+            var list = await manager.RndomFood();
+
+            food = new ObservableCollection<Food>(list);
+
         
-            //BindingContext = this;
+            StrMealThumb = food[0].strMealThumb;
+      
+
+            BindingContext = this;
+            base.OnAppearing();
+
 
         }
 
-        //protected async override void OnAppearing()
-        //{
+        public string strMealThumb
+        {
+            get { return StrMealThumb; }
+            set
+            {
+                StrMealThumb = value;
+                OnPropertyChanged(nameof(strMealThumb)); // Notify that there was a change on this property
+            }
+        }
 
-        //    //var list = await manager.GetRandomFood();
-        //    //randomFood = new ObservableCollection<RandomFood>(list);
-        //    //imgUrl = (randomFood[0].strMealThumb).ToString();
-        //    //Console.WriteLine(imgUrl);
-        //    //BindingContext = this;
-        //    base.OnAppearing();
-
-        //}
 
         async private void Search_By_Name(object sender, EventArgs e)
         {
             var name = fName.Text;
             await Navigation.PushAsync(new SearchName(name));
+            fName.Text = "";
         }
         async private void Search_By_FirstLetter(object sender, EventArgs e)
         {
-        //    Entry entry = e as Entry;
-           var firstLetter = fLetter.Text;
+            var firstLetter = fLetter.Text;
             await Navigation.PushAsync(new FirstLetter(firstLetter));
+            fLetter.Text = "";
         }
         async private void Search_By_Category(object sender, EventArgs e)
         {
@@ -61,15 +75,6 @@ namespace FoodRecipeApp
             await Navigation.PushAsync(new FavoritePage());
         }
 
-       
-        //public string ImageUrl
-        //{
-        //    get { return imgUrl; }
-        //    set
-        //    {
-        //        imgUrl = value;
-        //        OnPropertyChanged(nameof(ImageUrl)); // Notify that there was a change on this property
-        //    }
-        //}
+
     }
 }

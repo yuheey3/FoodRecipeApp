@@ -17,13 +17,13 @@ namespace FoodRecipeApp
         public ObservableCollection<Category> category;
         public Manager manager2 = new Manager();
         Category selectedCategory;
-     
+
 
 
         public Categories()
         {
             InitializeComponent();
-         
+
         }
 
         protected async override void OnAppearing()

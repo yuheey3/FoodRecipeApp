@@ -18,7 +18,7 @@ namespace FoodRecipeApp
         public Manager manager = new Manager();
         Category2 selectedFood;
         private string categoryName = "";
-       
+
 
 
         public CategoryDetail(string text)
@@ -31,10 +31,10 @@ namespace FoodRecipeApp
         {
             detailList3.ItemsSource = null;
 
-                var list = await manager.SearchByCategory(categoryName);
-                food = new ObservableCollection<Category2>(list);
-                detailList3.ItemsSource = food;
-          
+            var list = await manager.SearchByCategory(categoryName);
+            food = new ObservableCollection<Category2>(list);
+            detailList3.ItemsSource = food;
+
             base.OnAppearing();
 
         }
@@ -48,6 +48,6 @@ namespace FoodRecipeApp
 
         }
 
-        
+
     }
 }

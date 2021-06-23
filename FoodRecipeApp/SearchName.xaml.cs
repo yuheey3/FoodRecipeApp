@@ -15,12 +15,12 @@ namespace FoodRecipeApp
     public partial class SearchName : ContentPage
     {
         DBManager dbModel = new DBManager();
-        // VaccinesData updatedVaccine;
+
         ObservableCollection<MyFavorite> MyFavoriteData;
-      //  ObservableCollection<MyFavorite> allVaccines;
-       
+
+
         MyFavorite newFavorite;
-        bool isFavorite;
+        
 
         public ObservableCollection<Food> food;
         public Manager manager = new Manager();
@@ -34,6 +34,7 @@ namespace FoodRecipeApp
         private string StrTags = "";
         private string StrYoutube = "";
 
+
         public SearchName(string text)
         {
             InitializeComponent();
@@ -42,27 +43,55 @@ namespace FoodRecipeApp
 
         protected async override void OnAppearing()
         {
-            
+
             var list = await manager.GetFoodByName(fName);
+
             food = new ObservableCollection<Food>(list);
 
             MyFavoriteData = await dbModel.CreateTable();
-         
 
-             StrMeal = food[0].strMeal;
+
+            StrMeal = food[0].strMeal;
             StrCategory = food[0].strCategory;
             StrArea = food[0].strArea;
             StrInstructions = food[0].strInstructions;
             StrMealThumb = food[0].strMealThumb;
             StrTags = food[0].strTags;
             StrYoutube = food[0].strYoutube;
+
+            if (isFavoriteAdded(StrMeal))
+                isFavoriteStr.Text = "You already have this receipe";
+            else
+                isFavoriteStr.Text = "Add to my Favorite Food";
+
             BindingContext = this;
             base.OnAppearing();
 
+
         }
-     
 
 
+        public bool isFavoriteAdded(string name)
+        {
+            bool check = false;
+            int size = MyFavoriteData.Count;
+            Console.WriteLine(size);
+            for (int i = 0; i < size; i++)
+            {
+                if (check)
+                {
+                    break;
+                }
+                var n = MyFavoriteData[i].dataMeal;
+
+                if (n == name)
+                {
+                    check = true;
+                }
+
+            }
+            return check;
+        }
 
         public string strMeal
         {
@@ -137,6 +166,7 @@ namespace FoodRecipeApp
             }
         }
 
+
         async private void Button_Clicked(object sender, EventArgs e)
         {
             newFavorite = new MyFavorite();
@@ -145,12 +175,24 @@ namespace FoodRecipeApp
             newFavorite.dataArea = StrArea;
             newFavorite.dataMealThumb = StrMealThumb;
             newFavorite.dataTags = StrTags;
-            newFavorite.isFavorite = true;
-            Console.WriteLine(newFavorite.dataMeal); 
-            MyFavoriteData.Add(newFavorite);
-            await DisplayAlert("Success", "Added to My Favorite!", "Ok");
-            dbModel.insertNewFavorite(newFavorite);
-           // await Navigation.PopAsync();
+            Console.WriteLine(newFavorite.dataMeal);
+
+            if (isFavoriteAdded(StrMeal))
+            {
+                await DisplayAlert("Alert", "You already have this receipe!", "Ok");
+            }
+            else
+            {
+                MyFavoriteData.Add(newFavorite);
+                await DisplayAlert("Success", "Added to My Favorite!", "Ok");
+                isFavoriteStr.Text = "You already have this receipe";
+                dbModel.insertNewFavorite(newFavorite);
+            }
+
+
+
+
+
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FoodRecipeApp
         public FavoritePage()
         {
             InitializeComponent();
-         
+
         }
 
         protected async override void OnAppearing()
@@ -56,13 +56,11 @@ namespace FoodRecipeApp
 
             var myOrder = (item.CommandParameter as MyFavorite);
 
-                allFavorite.Remove(myOrder);
-                dbModel.deleteFavorite(myOrder);
-          
-            //   Demand.IsToggled = false;
-            // InStock.IsToggled = false;
+            allFavorite.Remove(myOrder);
+            dbModel.deleteFavorite(myOrder);
+
             DisplayAlert("Sucess", " Sucessfully Deleted!", "OK");
-            
+
         }
     }
 }
