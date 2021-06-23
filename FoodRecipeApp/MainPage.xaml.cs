@@ -56,7 +56,12 @@ namespace FoodRecipeApp
             await Navigation.PushAsync(new Categories());
         }
 
+        async private void MyFavorite_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FavoritePage());
+        }
 
+       
         //public string ImageUrl
         //{
         //    get { return imgUrl; }

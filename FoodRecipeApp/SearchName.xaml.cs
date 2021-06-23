@@ -144,6 +144,7 @@ namespace FoodRecipeApp
             newFavorite.dataCategory = StrCategory;
             newFavorite.dataArea = StrArea;
             newFavorite.dataMealThumb = StrMealThumb;
+            newFavorite.dataTags = StrTags;
             newFavorite.isFavorite = true;
             Console.WriteLine(newFavorite.dataMeal); 
             MyFavoriteData.Add(newFavorite);
