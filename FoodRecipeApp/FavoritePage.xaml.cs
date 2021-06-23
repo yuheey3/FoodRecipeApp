@@ -16,19 +16,17 @@ namespace FoodRecipeApp
     public partial class FavoritePage : ContentPage
     {
         DBManager dbModel = new DBManager();
-       // MyFavorite updatedVaccine;
         ObservableCollection<MyFavorite> allFavorite;
-
-        //public ObservableCollection<Food> food;
         public Manager manager = new Manager();
         MyFavorite selectedFood;
-  
+
+
 
 
         public FavoritePage()
         {
             InitializeComponent();
-            //fLetter = text;
+         
         }
 
         protected async override void OnAppearing()
@@ -48,6 +46,23 @@ namespace FoodRecipeApp
 
             var name = selectedFood.dataMeal;
             await Navigation.PushAsync(new SearchName(name));
+        }
+
+        public void deleteFromDB(object sender, EventArgs e)
+        {
+
+
+            var item = sender as MenuItem;
+
+            var myOrder = (item.CommandParameter as MyFavorite);
+
+                allFavorite.Remove(myOrder);
+                dbModel.deleteFavorite(myOrder);
+          
+            //   Demand.IsToggled = false;
+            // InStock.IsToggled = false;
+            DisplayAlert("Sucess", " Sucessfully Deleted!", "OK");
+            
         }
     }
 }
