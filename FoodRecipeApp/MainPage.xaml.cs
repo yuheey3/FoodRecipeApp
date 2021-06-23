@@ -25,22 +25,7 @@ namespace FoodRecipeApp
            
         }
 
-        protected async override void OnAppearing()
-        {
-
-            var list = await manager.RndomFood();
-
-            food = new ObservableCollection<Food>(list);
-
-        
-            StrMealThumb = food[0].strMealThumb;
       
-
-            BindingContext = this;
-            base.OnAppearing();
-
-
-        }
 
         public string strMealThumb
         {
