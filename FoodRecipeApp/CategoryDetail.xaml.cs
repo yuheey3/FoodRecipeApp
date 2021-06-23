@@ -12,40 +12,42 @@ using Xamarin.Forms.Xaml;
 namespace FoodRecipeApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FirstLetter : ContentPage
+    public partial class CategoryDetail : ContentPage
     {
-        public ObservableCollection<Food> food;
+        public ObservableCollection<Category2> food;
         public Manager manager = new Manager();
-        Food selectedFood;
-        private string fLetter = ""; 
+        Category2 selectedFood;
+        private string categoryName = "";
+       
 
 
-        public FirstLetter(string text)
+        public CategoryDetail(string text)
         {
             InitializeComponent();
-            fLetter = text;
+            categoryName = text;
         }
 
         protected async override void OnAppearing()
         {
-            detailList.ItemsSource = null;
+            detailList3.ItemsSource = null;
 
-         
-                var list = await manager.GetFood(fLetter);
-                food = new ObservableCollection<Food>(list);
-                detailList.ItemsSource = food;
-            
+                var list = await manager.SearchByCategory(categoryName);
+                food = new ObservableCollection<Category2>(list);
+                detailList3.ItemsSource = food;
+          
             base.OnAppearing();
 
         }
 
-        private async void detailList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void detailList3_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            selectedFood = detailList.SelectedItem as Food;
+            selectedFood = detailList3.SelectedItem as Category2;
 
             var name = selectedFood.strMeal;
             await Navigation.PushAsync(new SearchName(name));
 
         }
+
+        
     }
 }

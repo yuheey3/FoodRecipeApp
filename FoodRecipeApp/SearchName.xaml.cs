@@ -38,6 +38,8 @@ namespace FoodRecipeApp
             var list = await manager.GetFoodByName(fName);
             food = new ObservableCollection<Food>(list);
 
+
+
             StrMeal = food[0].strMeal;
             StrCategory = food[0].strCategory;
             StrArea = food[0].strArea;
@@ -49,6 +51,7 @@ namespace FoodRecipeApp
             base.OnAppearing();
 
         }
+
 
 
         public string strMeal

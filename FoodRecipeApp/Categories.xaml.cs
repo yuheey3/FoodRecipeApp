@@ -40,6 +40,9 @@ namespace FoodRecipeApp
         {
             selectedCategory = detailList2.SelectedItem as Category;
 
+            var name = selectedCategory.strCategory;
+            await Navigation.PushAsync(new CategoryDetail(name));
+
 
         }
 

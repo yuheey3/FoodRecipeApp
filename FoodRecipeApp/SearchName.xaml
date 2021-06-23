@@ -13,10 +13,10 @@
             <Image Aspect="AspectFill" x:Name="poster2" Source="{Binding strMealThumb}"></Image>
 			
                 <StackLayout>
-                    <Label  Text="{Binding strMeal}" FontAttributes="Bold" FontSize="Large" TextColor="Blue"/>
+                    <Label  Text="{Binding strMeal}" FontAttributes="Bold" FontSize="Large" TextColor="Blue" Margin="20,20,20,0"/>
                 </StackLayout>
 
-                <Grid Padding="2" RowSpacing="0" ColumnSpacing="0" >
+                <Grid Margin="20,20,20,20" RowSpacing="0" ColumnSpacing="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140"/>
                 </Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
             </Grid>
              <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout>
-              <Label Text="{Binding strInstructions}"  FontSize="Medium" />
+              <Label Text="{Binding strInstructions}"  FontSize="Medium" Margin="20,0,20,20" />
                 <!-- More Label objects go here -->
             </StackLayout>
         </ScrollView>
