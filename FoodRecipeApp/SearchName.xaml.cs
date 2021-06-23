@@ -14,6 +14,14 @@ namespace FoodRecipeApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchName : ContentPage
     {
+        DBManager dbModel = new DBManager();
+        // VaccinesData updatedVaccine;
+        ObservableCollection<MyFavorite> MyFavoriteData;
+      //  ObservableCollection<MyFavorite> allVaccines;
+       
+        MyFavorite newFavorite;
+        bool isFavorite;
+
         public ObservableCollection<Food> food;
         public Manager manager = new Manager();
         private string fName = "";
@@ -34,13 +42,14 @@ namespace FoodRecipeApp
 
         protected async override void OnAppearing()
         {
-
+            
             var list = await manager.GetFoodByName(fName);
             food = new ObservableCollection<Food>(list);
 
+            MyFavoriteData = await dbModel.CreateTable();
+         
 
-
-            StrMeal = food[0].strMeal;
+             StrMeal = food[0].strMeal;
             StrCategory = food[0].strCategory;
             StrArea = food[0].strArea;
             StrInstructions = food[0].strInstructions;
@@ -51,6 +60,7 @@ namespace FoodRecipeApp
             base.OnAppearing();
 
         }
+     
 
 
 
@@ -125,6 +135,21 @@ namespace FoodRecipeApp
                 StrYoutube = value;
                 OnPropertyChanged(nameof(strYoutube)); // Notify that there was a change on this property
             }
+        }
+
+        async private void Button_Clicked(object sender, EventArgs e)
+        {
+            newFavorite = new MyFavorite();
+            newFavorite.dataMeal = StrMeal;
+            newFavorite.dataCategory = StrCategory;
+            newFavorite.dataArea = StrArea;
+            newFavorite.dataMealThumb = StrMealThumb;
+            newFavorite.isFavorite = true;
+            Console.WriteLine(newFavorite.dataMeal); 
+            MyFavoriteData.Add(newFavorite);
+            await DisplayAlert("Success", "Added to My Favorite!", "Ok");
+            dbModel.insertNewFavorite(newFavorite);
+           // await Navigation.PopAsync();
         }
     }
 }

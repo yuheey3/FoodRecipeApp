@@ -37,7 +37,11 @@
             <StackLayout>
               <Label Text="{Binding strInstructions}"  FontSize="Medium" Margin="20,0,20,20" />
                 <!-- More Label objects go here -->
+                <Button Margin="20,10,20,20" Text="Add to My Favourite Food" FontAttributes="Bold" FontSize="Medium"  TextColor="red" BackgroundColor="Lightpink" HeightRequest="60" Clicked="Button_Clicked" />
             </StackLayout>
+
+   
+              
         </ScrollView>
             
             
