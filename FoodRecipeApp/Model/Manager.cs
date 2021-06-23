@@ -101,23 +101,9 @@ namespace FoodRecipeApp.Model
         }
 
 
-        //all category
-        public async Task<List<Food>> RndomFood()
-        {
+       
 
 
-            var response = await client.GetAsync(url + "/api/json/v1/1/random.php");
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                return new List<Food>();
-            else
-            {
-                var stringResponse = await response.Content.ReadAsStringAsync();// json
-                var dic = JsonConvert.DeserializeObject<Dictionary<string, object>>(stringResponse);
-                var array = dic.ElementAt(0).Value;
-                return JsonConvert.DeserializeObject<List<Food>>(array.ToString());
-
-            }
-
-        }
+        
     }
 }
